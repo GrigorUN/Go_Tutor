@@ -3,17 +3,34 @@ package main
 import "fmt"
 
 func main() {
-	weekTempArr := [7]int{1, 2, 3, 4, 5, 6, 7}
-	workDaysSlice := weekTempArr[:5]
-	weekendSlice := weekTempArr[3:]
-	fromTuesdayToThursDaySlice := weekTempArr[1:6]
-	weekTempSlice := weekTempArr[:6]
-
-	fmt.Println(workDaysSlice, len(workDaysSlice), cap(workDaysSlice))                                        // [1 2 3 4 5] 5 7
-	fmt.Println(weekendSlice, len(weekendSlice), cap(weekendSlice))                                           // [6 7] 2 2
-	fmt.Println(fromTuesdayToThursDaySlice, len(fromTuesdayToThursDaySlice), cap(fromTuesdayToThursDaySlice)) // [2 3 4] 3 6
-	fmt.Println(weekTempSlice, len(weekTempSlice), cap(weekTempSlice))                                        // [1 2 3 4 5 6 7] 7 7
+	dim := 100
+	s := make([]int, 0, dim)
+	// заполняем слайс числами
+	for i := 0; i < dim; i++ {
+		s = append(s, i+1)
+	}
+	// оставляем первые и последние 10 элементов
+	s = append(s[:10], s[dim-10:]...)
+	dim = len(s)
+	// разворачиваем слайс
+	for i := range s[:dim/2] {
+		s[i], s[dim-i-1] = s[dim-i-1], s[i]
+	}
+	fmt.Println(s)
 }
+
+// func main() {
+// 	weekTempArr := [7]int{1, 2, 3, 4, 5, 6, 7}
+// 	workDaysSlice := weekTempArr[:5]
+// 	weekendSlice := weekTempArr[3:]
+// 	fromTuesdayToThursDaySlice := weekTempArr[1:6]
+// 	weekTempSlice := weekTempArr[:6]
+
+// 	fmt.Println(workDaysSlice, len(workDaysSlice), cap(workDaysSlice))                                        // [1 2 3 4 5] 5 7
+// 	fmt.Println(weekendSlice, len(weekendSlice), cap(weekendSlice))                                           // [6 7] 2 2
+// 	fmt.Println(fromTuesdayToThursDaySlice, len(fromTuesdayToThursDaySlice), cap(fromTuesdayToThursDaySlice)) // [2 3 4] 3 6
+// 	fmt.Println(weekTempSlice, len(weekTempSlice), cap(weekTempSlice))                                        // [1 2 3 4 5 6 7] 7 7
+// }
 
 // package main
 
