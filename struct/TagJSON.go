@@ -8,21 +8,20 @@ import (
 )
 
 type Person struct {
-	Name        string 		`json:"Имя"`
-	Email       string		`json:"Почта"`
-	DateOfBirth time.Time	`json:"-"`
+	Name        string    `json:"Имя"`
+	Email       string    `json:"Почта"`
+	DateOfBirth time.Time `json:"-"`
 }
 
-func main(){
+func main() {
 	p := Person{
-		Name:	"Alex",
-		Email:	"a@yandex.ru",
+		Name:        "Alex",
+		Email:       "a@yandex.ru",
 		DateOfBirth: time.Now(),
 	}
-
 	jsMan, err := json.Marshal(p)
-    if err != nil {
-        log.Fatalln("unable marshal to json")
-    }
+	if err != nil {
+		log.Fatalln("unable marshal to json")
+	}
 	fmt.Printf("Man %v", string(jsMan))
 }
