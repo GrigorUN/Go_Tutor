@@ -1,1 +1,3 @@
-"%c ",
+package main
+
+import "fmt"
